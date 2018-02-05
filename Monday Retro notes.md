@@ -28,7 +28,7 @@
   - Mob programme in the morning
   - Plan a group lunch in the week 
 
-## Standup Structre tomorrow
+## Standup Structure tomorrow
   - Start at 9:30 (ideally)
   - Review tickets for the day 
   - Expectation/target setting
