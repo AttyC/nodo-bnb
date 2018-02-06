@@ -1,7 +1,6 @@
 require 'sinatra/base'
-
+# class for NodoBnB app
 class Nodo < Sinatra::Base
-
   enable :sessions
 
   get '/' do
@@ -14,4 +13,15 @@ class Nodo < Sinatra::Base
     redirect to '/'
   end
 
+  get '/spaces/new' do
+    erb :'spaces/space'
+  end
+
+  get '/spaces/space' do
+    erb :'spaces/index'
+  end
+
+  post '/space' do
+    redirect to '/spaces/space'
+  end
 end
