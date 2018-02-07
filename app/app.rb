@@ -9,7 +9,11 @@ enable :sessions
     erb :'users/index'
   end
 
-  post '/user' do
+  get '/login' do
+    erb :'users/login'
+  end
+
+  post '/user/new' do
     User.create(username: params[:user_name], password: params[:password])
     redirect to '/'
   end
