@@ -4,8 +4,14 @@ require_relative 'datamapper_setup'
 class Nodo < Sinatra::Base
 enable :sessions
 
-  get '/' do
-    @user = User.first
+  helpers do
+    def get_user
+      @user ||= User.get(session[:id])
+    end
+  end
+
+  get '/' do   #this is the signup path
+    get_user
     erb :'users/index'
   end
 
@@ -20,12 +26,13 @@ enable :sessions
   end
 
   post '/user/new' do
-    User.create(username: params[:username], password: params[:password])
+    user = User.create(username: params[:username], password: params[:password])
+    session[:id] = user.id
     redirect to '/'
   end
 
   get '/spaces' do
-    @user = User.get(session[:id])
+    get_user
     erb :'spaces/spaces'
   end
 
