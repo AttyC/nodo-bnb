@@ -5,7 +5,7 @@ class Nodo < Sinatra::Base
 enable :sessions
 
   get '/' do
-    @user_name = User.first
+    @user = User.first
     erb :'users/index'
   end
 
@@ -14,13 +14,13 @@ enable :sessions
   end
 
   post '/user/login' do
-    user = User.authenticate(params[:user_name], params[:password])
+    user = User.authenticate(params[:username], params[:password])
     session[:id] = user.id
     redirect to '/spaces'
   end
 
   post '/user/new' do
-    User.create(username: params[:user_name], password: params[:password])
+    User.create(username: params[:username], password: params[:password])
     redirect to '/'
   end
 

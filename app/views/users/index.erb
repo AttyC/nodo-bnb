@@ -1,10 +1,10 @@
-<% if @user_name %>
-  <h2>Welcome to NodoBnB, <%= @user_name.username %></h2>
+<% if @user %>
+  <h2>Welcome to NodoBnB, <%= @user.username %></h2>
 <% end %>
 
 <form action="/user/new" method="post">
-  <label for="user_name">Name:
-    <input type="text" name="user_name">
+  <label for="username">Name:
+    <input type="text" name="username">
   </label>
   <label for="password">Password:
     <input type="password" name="password">
