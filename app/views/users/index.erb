@@ -1,5 +1,5 @@
 <% if @user_name %>
-  <h2>Welcome to NodoBnB, <%= @user_name %></h2>
+  <h2>Welcome to NodoBnB, <%= @user_name.username %></h2>
 <% end %>
 
 <form action="/user" method="post">
