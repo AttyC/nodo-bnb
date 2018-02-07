@@ -13,9 +13,20 @@ enable :sessions
     erb :'users/login'
   end
 
+  post '/user/login' do
+    user = User.authenticate(params[:user_name], params[:password])
+    session[:id] = user.id
+    redirect to '/spaces'
+  end
+
   post '/user/new' do
     User.create(username: params[:user_name], password: params[:password])
     redirect to '/'
+  end
+
+  get '/spaces' do
+    @user = User.get(session[:id])
+    erb :'spaces/spaces'
   end
 
   get '/spaces/new' do

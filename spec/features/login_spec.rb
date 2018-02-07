@@ -5,6 +5,6 @@ feature 'login' do
     fill_in 'user_name', with: 'Fran'
     fill_in 'password', with: 'password'
     click_button 'login'
-    expect(page).to have_text('Hello Fran!')
+    expect(page).to have_text('Hello, Fran!')
   end
 end
