@@ -4,8 +4,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require './app/app'
-require './app/models/user'
-require './app/models/space'
+require 'database_cleaner'
 # require 'features/web_helpers'
 
 Capybara.app = Nodo
@@ -18,4 +17,17 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+ config.before(:suite) do
+   DatabaseCleaner.strategy = :transaction
+   DatabaseCleaner.clean_with(:truncation)
+ end
+
+ config.before(:each) do
+   DatabaseCleaner.start
+ end
+
+ config.after(:each) do
+   DatabaseCleaner.clean
+ end
 end

@@ -1,6 +1,3 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-
 class User
   include DataMapper::Resource
 
@@ -8,7 +5,3 @@ class User
   property :username, String
   property :password, BCryptHash
 end
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/nodo_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_upgrade!
