@@ -1,16 +1,16 @@
 require 'sinatra/base'
+require_relative 'datamapper_setup'
 # class for NodoBnB app
 class Nodo < Sinatra::Base
 enable :sessions
 
   get '/' do
-    @user_name = session[:user_name]
+    @user_name = User.first
     erb :'users/index'
   end
 
   post '/user' do
-    session[:user_name] = params[:user_name]
-    user = User.create(username: params[:user_name], password: params[:password])
+    User.create(username: params[:user_name], password: params[:password])
     redirect to '/'
   end
 
