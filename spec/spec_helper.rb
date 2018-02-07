@@ -5,6 +5,7 @@ require 'capybara/rspec'
 require 'rspec'
 require './app/app'
 require './app/models/user'
+require './app/models/space'
 # require 'features/web_helpers'
 
 Capybara.app = Nodo
