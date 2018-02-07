@@ -6,6 +6,7 @@ class User
 
   property :id, Serial
   property :username, String
+  property :password, BCryptHash
 end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/nodo_#{ENV['RACK_ENV']}")
