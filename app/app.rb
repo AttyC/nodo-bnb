@@ -18,12 +18,12 @@ enable :sessions
     erb :'spaces/space'
   end
 
-  get '/spaces/space' do
-    @space = Space.first
+  get '/spaces' do
+    @space = Space.all
     erb :'spaces/index'
   end
 
-  post '/space/new' do
+  post '/spaces/new' do
     Space.create(
       name: params[:name],
       description: params[:description],
@@ -31,6 +31,6 @@ enable :sessions
       from_date: params[:from_date],
       to_date: params[:to_date]
     )
-    redirect to '/spaces/space'
+    redirect to '/spaces'
   end
 end
