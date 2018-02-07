@@ -1,9 +1,6 @@
 require 'data_mapper'
 require_relative './app/app'
 
-require 'data_mapper'
-require_relative './app/app.rb'
-
 task default: %w[upgrade]
 
 task :upgrade do

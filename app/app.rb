@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
 require_relative 'datamapper_setup'
 # class for NodoBnB app
@@ -20,6 +22,8 @@ enable :sessions
 
   get '/spaces' do
     @space = Space.all
+    # p '1'
+    # p @space
     erb :'spaces/index'
   end
 
@@ -31,6 +35,8 @@ enable :sessions
       from_date: params[:from_date],
       to_date: params[:to_date]
     )
+    p "HEELLPPPPPPP"
+    p Space.all
     redirect to '/spaces'
   end
 end
