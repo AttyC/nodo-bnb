@@ -1,5 +1,6 @@
-
-
+<% if @message %>
+  <%= @message %>
+<% end %>
 <form action="user/login" method="post">
   <label for="username">Name:
     <input type="text" name="username">

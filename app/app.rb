@@ -1,7 +1,10 @@
 require 'sinatra/base'
 require_relative 'datamapper_setup'
+require 'sinatra/flash'
 # class for NodoBnB app
 class Nodo < Sinatra::Base
+
+register Sinatra::Flash
 enable :sessions
 
   helpers do
@@ -21,8 +24,13 @@ enable :sessions
 
   post '/user/login' do
     user = User.authenticate(params[:username], params[:password])
-    session[:id] = user.id
-    redirect to '/spaces'
+    if user
+      session[:id] = user.id
+      redirect to '/spaces'
+    else
+      flash.next[:login] = "Please enter the correct login details"
+      redirect to '/login'
+    end
   end
 
   post '/user/new' do
