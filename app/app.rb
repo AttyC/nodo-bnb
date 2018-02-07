@@ -1,7 +1,7 @@
 require 'sinatra/base'
 # class for NodoBnB app
 class Nodo < Sinatra::Base
-  enable :sessions
+enable :sessions
 
   get '/' do
     @user_name = session[:user_name]
@@ -10,6 +10,7 @@ class Nodo < Sinatra::Base
 
   post '/user' do
     session[:user_name] = params[:user_name]
+    user = User.create(username: params[:user_name], password: params[:password])
     redirect to '/'
   end
 
