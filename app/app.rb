@@ -36,7 +36,7 @@ enable :sessions
   post '/user/new' do
     user = User.create(username: params[:username], password: params[:password])
     session[:id] = user.id
-    redirect to '/'
+    redirect to '/spaces'
   end
 
   get '/spaces' do
