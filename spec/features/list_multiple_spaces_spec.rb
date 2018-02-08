@@ -11,10 +11,10 @@ feature 'Listing multiple spaces' do
     expect(page).to have_text('Fran')
     expect(page).to have_text('Nice place!')
     expect(page).to have_text('100')
-    expect(page).to have_text('2018-10-12')
+    expect(page).to have_text('12-10-2018')
     expect(page).to have_text('Anything')
     expect(page).to have_text('The best place!')
     expect(page).to have_text('10')
-    expect(page).to have_text('2018-03-16')
+    expect(page).to have_text('16-03-2018')
   end
 end

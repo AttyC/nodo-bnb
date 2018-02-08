@@ -17,6 +17,6 @@
         <td ><%= space.name %></td>
         <td><%= space.description %></td>
         <td><%= space.price %></td>
-        <td><%= space.from_date %></td>
+        <td><%= space.from_date.strftime("%d-%m-%Y") %></td>
       </tr>
       <% end %>

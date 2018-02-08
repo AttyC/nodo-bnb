@@ -20,6 +20,6 @@ feature 'View new space' do
     expect(page).to have_text('Fran')
     expect(page).to have_text('Nice place!')
     expect(page).to have_text('100')
-    expect(page).to have_text('2018-10-12')
+    expect(page).to have_text('12-10-2018')
   end
 end
