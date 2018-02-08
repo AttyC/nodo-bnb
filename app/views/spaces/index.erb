@@ -11,7 +11,8 @@
         <th>Date from</th>
         <th>End date</th>
         <th>Number of days avaliable</th>
-        <th>Owner</th>
+        <th>Owner</th>                   
+        <th>Book</th>
       </tr>
       <% @space.each do |space| %>
       <tr>
@@ -20,8 +21,15 @@
         <td><%= space.price %></td>
         <td><%= space.start_date %></td>
         <td><%= space.end_date %></td>
-        <td><%= space.avaliable_days %> days</td>
+        <td><%= space.avaliable_days%> days</td>
         <td><%= User.get(space.user_id).username %></td>
+        <td><form action="/spaces/<%= space.id %>" method="post">
+          <input type="hidden" name="_method" value="patch" />
+          <input type="submit" value="Book" id='space<%= space.id %>' >
+        </form> </td>
       </tr>
       <% end %>
 </table>
+
+<a href="/spaces/new">Add a new space</a>
+

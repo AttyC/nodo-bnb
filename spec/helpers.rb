@@ -19,3 +19,16 @@ def sign_up_and_login(password = 'password')
   fill_in 'password', with: password
   click_button 'login'
 end
+
+def two_users_sign_up_and_login_and_book_a_space
+  sign_up_and_login('password')
+  fill_in_listing
+  click_button 'List my space'
+  click_button 'Logout'
+  User.create(username: 'Bob', password: 'Bobrules')
+  visit('/login')
+  fill_in 'username', with: 'Bob'
+  fill_in 'password', with: 'Bobrules'
+  click_button 'login'
+
+end

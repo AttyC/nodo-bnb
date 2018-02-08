@@ -76,4 +76,12 @@ enable :sessions
       redirect to '/login'
     end
   end
+
+  patch '/spaces/:id' do
+    space = Space.get(params[:id])
+    space.update(:booking => 'pending')
+    flash.keep[:notice] = 'Successfully requested booking'
+    redirect to "/spaces"
+  end
+
 end
