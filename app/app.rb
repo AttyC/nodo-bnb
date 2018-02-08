@@ -71,8 +71,8 @@ enable :sessions
     redirect to '/spaces'
   end
 
-  post '/spaces/booking' do
-    space = Space.first
+  post '/spaces/:id' do
+    space = Space.get(params[:id])
     space.update(:booking => 'pending')
   end
 
