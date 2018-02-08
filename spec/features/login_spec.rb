@@ -1,7 +1,6 @@
 feature 'login' do
   scenario 'user logs in' do
-    password = 'password'
-    sign_up_and_login(password)
+    sign_up_and_login
     expect(page).to have_text('Hello, Fran!')
   end
 
