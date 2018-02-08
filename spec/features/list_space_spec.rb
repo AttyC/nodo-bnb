@@ -17,7 +17,9 @@ feature 'View new space' do
   scenario 'user an view a new space' do
     fill_in_listing
     click_button 'List my space'
+    expect(page).to have_text('Fran')
     expect(page).to have_text('Nice place!')
+    expect(page).to have_text('100')
     expect(page).to have_text('2018-10-12')
   end
 end
