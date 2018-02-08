@@ -70,4 +70,10 @@ enable :sessions
     flash.next[:notice] = "Your space is listed"
     redirect to '/spaces'
   end
+
+  post '/spaces/booking' do
+    space = Space.first
+    space.update(:booking => 'pending')
+  end
+
 end

@@ -11,6 +11,7 @@
         <th>Date from</th>
         <th>End date</th>
         <th>Number of days avaliable</th>
+        <th>Book</th>
       </tr>
       <% @space.each do |space| %>
       <tr>
@@ -20,6 +21,9 @@
         <td><%= space.start_date %></td>
         <td><%= space.end_date %></td>
         <td><%= space.avaliable_days%> days</td>
+        <td><form action="spaces/booking" method="post">
+          <input type="submit" value="Book">
+        </form> </td>
       </tr>
       <% end %>
 </table>
