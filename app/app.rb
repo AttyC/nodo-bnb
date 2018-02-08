@@ -43,16 +43,12 @@ enable :sessions
 
   get '/spaces' do
     get_user
-    erb :'spaces/spaces'
+    @space = Space.all
+    erb :'spaces/index'
   end
 
   get '/spaces/new' do
     erb :'spaces/space'
-  end
-
-  get '/spaces' do
-    @space = Space.all
-    erb :'spaces/index'
   end
 
   post '/spaces/new' do
