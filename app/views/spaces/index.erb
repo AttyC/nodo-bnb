@@ -2,11 +2,24 @@
   <h2>Hello, <%= @user.username %>!</h2>
 <% end %>
 
-<ul>
-  <% @space.each do |space| %>
-    <li>
-      <%= space.from_date %>
-      <%= space.description %>
-    </li>
-  <% end %>
-</ul>
+<table>
+      <caption>Listing space</caption>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price per night</th>
+        <th>Date from</th>
+        <th>End date</th>
+        <th>Number of days avaliable</th>
+      </tr>
+      <% @space.each do |space| %>
+      <tr>
+        <td ><%= space.name %></td>
+        <td><%= space.description %></td>
+        <td><%= space.price %></td>
+        <td><%= space.start_date %></td>
+        <td><%= space.end_date %></td>
+        <td><%= space.avaliable_days%> days</td>
+      </tr>
+      <% end %>
+</table>

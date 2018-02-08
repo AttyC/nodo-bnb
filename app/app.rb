@@ -59,7 +59,7 @@ enable :sessions
   end
 
   post '/spaces/new' do
-    Space.create(
+    space = Space.create(
       name: params[:name],
       description: params[:description],
       price: params[:price],
