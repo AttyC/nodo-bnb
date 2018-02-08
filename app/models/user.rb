@@ -15,5 +15,4 @@ class User
       auth_user.password == password ? auth_user : nil
     end
   end
-
 end
