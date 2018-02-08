@@ -9,17 +9,17 @@ class Space
   property :to_date, Date
   property :booking, String, :default => 'available'
 
-  belongs_to :user, :required => false
+  belongs_to :user, required: false
 
   def start_date
-    from_date.strftime("%d-%m-%Y")
+    from_date.strftime('%d-%m-%Y')
   end
 
   def end_date
-    to_date.strftime("%d-%m-%Y")
+    to_date.strftime('%d-%m-%Y')
   end
 
   def avaliable_days
-   (to_date - from_date).to_i
+    (to_date - from_date).to_i
   end
 end
