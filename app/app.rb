@@ -59,16 +59,22 @@ enable :sessions
   end
 
   post '/spaces/new' do
-    space = Space.create(
-      name: params[:name],
-      description: params[:description],
-      price: params[:price],
-      from_date: params[:from_date],
-      to_date: params[:to_date],
-      user_id: session[:id]
-    )
-    flash.next[:notice] = "Your space is listed"
-    redirect to '/spaces'
+    get_user
+    if !@user.nil?
+      space = Space.create(
+        name: params[:name],
+        description: params[:description],
+        price: params[:price],
+        from_date: params[:from_date],
+        to_date: params[:to_date],
+        user_id: session[:id]
+      )
+      flash.next[:notice] = "Your space is listed"
+      redirect to '/spaces'
+    else
+      flash.keep[:notice] = "Please log in to list a space"
+      redirect to '/login'
+    end
   end
 
   patch '/spaces/:id' do
