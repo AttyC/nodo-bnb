@@ -5,10 +5,9 @@ require_relative 'datamapper_setup'
 require 'sinatra/flash'
 # class for NodoBnB app
 class Nodo < Sinatra::Base
-
-use Rack::MethodOverride
-register Sinatra::Flash
-enable :sessions
+  use Rack::MethodOverride
+  register Sinatra::Flash
+  enable :sessions
 
   helpers do
     def get_user
@@ -16,7 +15,7 @@ enable :sessions
     end
   end
 
-  get '/' do   #this is the signup path
+  get '/' do # this is the signup path
     get_user
     erb :'users/index'
   end
@@ -37,7 +36,7 @@ enable :sessions
       session[:id] = user.id
       redirect to '/spaces'
     else
-      flash.next[:notice] = "Please enter the correct login details"
+      flash.next[:notice] = 'Please enter the correct login details'
       redirect to '/login'
     end
   end
