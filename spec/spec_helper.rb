@@ -5,7 +5,7 @@ require 'capybara/rspec'
 require 'rspec'
 require './app/app'
 require 'database_cleaner'
-# require 'features/web_helpers'
+require 'helpers'
 
 Capybara.app = Nodo
 

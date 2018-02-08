@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
 require_relative 'datamapper_setup'
 require 'sinatra/flash'
@@ -48,19 +50,20 @@ enable :sessions
     erb :'spaces/space'
   end
 
-  get '/spaces/space' do
-    @space = Space.first
+  get '/spaces' do
+    @space = Space.all
     erb :'spaces/index'
   end
 
-  post '/space/new' do
+  post '/spaces/new' do
     Space.create(
       name: params[:name],
       description: params[:description],
       price: params[:price],
       from_date: params[:from_date],
-      to_date: params[:to_date]
+      to_date: params[:to_date],
+      user_id: session[:id]
     )
-    redirect to '/spaces/space'
+    redirect to '/spaces'
   end
 end
