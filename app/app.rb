@@ -6,6 +6,7 @@ require 'sinatra/flash'
 # class for NodoBnB app
 class Nodo < Sinatra::Base
 
+use Rack::MethodOverride
 register Sinatra::Flash
 enable :sessions
 
@@ -18,6 +19,12 @@ enable :sessions
   get '/' do   #this is the signup path
     get_user
     erb :'users/index'
+  end
+
+  delete '/logout' do
+    session[:id] = nil
+    flash.keep[:notice] = 'Byeee!'
+    redirect to '/login'
   end
 
   get '/login' do

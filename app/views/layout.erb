@@ -5,10 +5,19 @@
     <title>Nodo BnB</title>
   </head>
   <body>
+    <header>
+      <form method="post" action="/logout">
+        <input value="Logout" type="submit" />
+        <input type="hidden" name="_method" value="delete" />
+      </form>
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+    </header>
     <h1>Nodo BnB</h1>
     <section id="main">
       <% if flash[:login] %>
-      <%= flash[:login] %>
+        <%= flash[:login] %>
       <% end %>
       <%= yield %>
     </section>
