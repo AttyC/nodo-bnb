@@ -9,9 +9,10 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Price</th>
-        <th>date from</th>
-        <th>end date</th>
+        <th>Price per night</th>
+        <th>Date from</th>
+        <th>End date</th>
+        <th>Number of days avaliable</th>
       </tr>
       <% @space.each do |space| %>
       <tr>
@@ -20,5 +21,6 @@
         <td><%= space.price %></td>
         <td><%= space.from_date.strftime("%d-%m-%Y") %></td>
         <td><%= space.to_date.strftime("%d-%m-%Y") %></td>
+        <td><%= (space.to_date - space.from_date).to_i%> days</td>
       </tr>
       <% end %>
