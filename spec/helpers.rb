@@ -11,3 +11,11 @@ def fill_in_listing(name: 'Fran',
   fill_in :from_date, with: from_date
   fill_in :to_date, with: to_date
 end
+
+def sign_up_and_login(password)
+  User.create(username: 'Fran', password: 'password')
+  visit('/login')
+  fill_in 'username', with: 'Fran'
+  fill_in 'password', with: password
+  click_button 'login'
+end

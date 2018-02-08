@@ -6,6 +6,7 @@ require 'sinatra/flash'
 # class for NodoBnB app
 class Nodo < Sinatra::Base
 
+use Rack::MethodOverride
 register Sinatra::Flash
 enable :sessions
 
@@ -20,6 +21,12 @@ enable :sessions
     erb :'users/index'
   end
 
+  delete '/logout' do
+    session[:id] = nil
+    flash.keep[:notice] = 'Thank you for visiting NodoBnB'
+    redirect to '/login'
+  end
+
   get '/login' do
     erb :'users/login'
   end
@@ -30,7 +37,7 @@ enable :sessions
       session[:id] = user.id
       redirect to '/spaces'
     else
-      flash.next[:login] = "Please enter the correct login details"
+      flash.next[:notice] = "Please enter the correct login details"
       redirect to '/login'
     end
   end
@@ -60,6 +67,7 @@ enable :sessions
       to_date: params[:to_date],
       user_id: session[:id]
     )
+    flash.next[:notice] = "Your space is listed"
     redirect to '/spaces'
   end
 end
