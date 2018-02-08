@@ -17,7 +17,21 @@ feature 'View new space' do
   scenario 'user an view a new space' do
     fill_in_listing
     click_button 'List my space'
+    expect(page).to have_text('Fran')
     expect(page).to have_text('Nice place!')
-    expect(page).to have_text('2018-10-12')
+    expect(page).to have_text('100')
+  end
+
+  scenario 'see\'s start date and end date that space is avaliable' do
+     fill_in_listing
+     click_button 'List my space'
+     expect(page).to have_text('12-10-2018')
+     expect(page).to have_text('19-10-2018')
+  end
+
+  scenario 'You can see how many days a space is avaliable' do
+     fill_in_listing
+     click_button 'List my space'
+     expect(page).to have_text('7 days')
   end
 end
