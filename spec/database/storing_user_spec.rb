@@ -1,6 +1,6 @@
 describe 'add one user to databse' do
   it 'adds a single user to the database' do
-    expect { User.create(username: 'Fran')}.to change(User, :count).by 1
+    expect { User.create(username: 'Fran') }.to change(User, :count).by 1
   end
 
   it 'stores an encrypted password for user' do
