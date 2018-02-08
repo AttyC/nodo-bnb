@@ -60,7 +60,7 @@ class Nodo < Sinatra::Base
   post '/spaces/new' do
     get_user
     if !@user.nil?
-      space = Space.create(
+      Space.create(
         name: params[:name],
         description: params[:description],
         price: params[:price],
@@ -68,19 +68,18 @@ class Nodo < Sinatra::Base
         to_date: params[:to_date],
         user_id: session[:id]
       )
-      flash.next[:notice] = "Your space is listed"
+      flash.next[:notice] = 'Your space is listed'
       redirect to '/spaces'
     else
-      flash.keep[:notice] = "Please log in to list a space"
+      flash.keep[:notice] = 'Please log in to list a space'
       redirect to '/login'
     end
   end
 
   patch '/spaces/:id' do
     space = Space.get(params[:id])
-    space.update(:booking => 'pending')
+    space.update(booking: 'pending')
     flash.keep[:notice] = 'Successfully requested booking'
-    redirect to "/spaces"
+    redirect to '/spaces'
   end
-
 end
