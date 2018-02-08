@@ -19,6 +19,6 @@ class Space
   end
 
   def avaliable_days
-   (from_date - to_date).to_i
+   (to_date - from_date).to_i
   end
 end
