@@ -1,5 +1,6 @@
 feature 'Listing multiple spaces' do
   scenario 'A user can list multiple spaces' do
+    sign_up_and_login
     fill_in_listing
     click_button 'List my space'
     fill_in_listing(name: 'Anything',
