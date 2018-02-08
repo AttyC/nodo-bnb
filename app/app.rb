@@ -12,7 +12,8 @@ enable :sessions
   end
 
   post '/user' do
-    User.create(username: params[:user_name], password: params[:password])
+    user = User.create(username: params[:user_name], password: params[:password])
+    session[:id] = user.id
     redirect to '/'
   end
 
@@ -22,8 +23,6 @@ enable :sessions
 
   get '/spaces' do
     @space = Space.all
-    # p '1'
-    # p @space
     erb :'spaces/index'
   end
 
@@ -33,10 +32,9 @@ enable :sessions
       description: params[:description],
       price: params[:price],
       from_date: params[:from_date],
-      to_date: params[:to_date]
+      to_date: params[:to_date],
+      user_id: session[:id]
     )
-    p "HEELLPPPPPPP"
-    p Space.all
     redirect to '/spaces'
   end
 end

@@ -6,8 +6,7 @@ feature 'Add user and spaces' do
     click_button 'Submit'
     fill_in_listing
     click_button('List my space')
-    user = User.first
-    p Space.all
-    expect(Space.get(0)).to eq('Fran')
+    space = Space.first
+    expect(User.get(space.user_id).username).to eq('Fran')
   end
 end

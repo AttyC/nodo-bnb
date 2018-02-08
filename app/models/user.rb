@@ -5,5 +5,5 @@ class User
   property :username, String
   property :password, BCryptHash
 
-  # has n, :spaces
+  has n, :spaces
 end

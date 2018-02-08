@@ -7,6 +7,6 @@ class Space
   property :price, Float
   property :from_date, Date
   property :to_date, Date
-  # 
-  # belongs_to :user
+
+  belongs_to :user, :required => false
 end
