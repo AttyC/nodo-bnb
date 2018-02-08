@@ -1,7 +1,7 @@
 feature 'Add user and spaces' do
   scenario 'can add multiple spaces to user' do
     visit('/')
-    fill_in 'user_name', with: 'Fran'
+    fill_in 'username', with: 'Fran'
     fill_in 'password', with: 'Idunno'
     click_button 'Submit'
     fill_in_listing
