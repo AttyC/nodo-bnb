@@ -2,7 +2,7 @@
   <h2>Hello, <%= @user.username %>!</h2>
 <% end %>
 
-<table>
+<table id="listings">
       <caption>Listing space</caption>
       <tr>
         <th>Name</th>
@@ -11,15 +11,17 @@
         <th>Date from</th>
         <th>End date</th>
         <th>Number of days avaliable</th>
+        <th>Owner</th>
       </tr>
       <% @space.each do |space| %>
       <tr>
-        <td ><%= space.name %></td>
+        <td><%= space.name %></td>
         <td><%= space.description %></td>
         <td><%= space.price %></td>
         <td><%= space.start_date %></td>
         <td><%= space.end_date %></td>
-        <td><%= space.avaliable_days%> days</td>
+        <td><%= space.avaliable_days %> days</td>
+        <td><%= User.get(space.user_id).username %></td>
       </tr>
       <% end %>
 </table>

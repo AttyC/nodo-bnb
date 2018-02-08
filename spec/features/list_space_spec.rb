@@ -1,15 +1,26 @@
-feature 'list space' do
-  scenario 'user lists a new space' do
-    sign_up_and_login
-    fill_in_listing
-    click_button 'List my space'
-    expect(page).to have_text('Your space is listed')
-  end
-
+feature 'log in to list space' do
   scenario 'user has to log in to list a new space' do
     fill_in_listing
     click_button 'List my space'
     expect(page).to have_text('Please log in to list a space')
+  end
+end
+
+feature 'list space' do
+  before do
+    sign_up_and_login
+    fill_in_listing
+    click_button 'List my space'
+  end
+
+  scenario 'user lists a new space' do
+    expect(page).to have_text('Your space is listed')
+  end
+
+  scenario 'listing displays the user that listed it' do
+    within '#listings' do
+      expect(page).to have_text('Fran')
+    end
   end
 end
 
