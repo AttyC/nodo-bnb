@@ -6,4 +6,9 @@ class User
   property :password, BCryptHash
 
   has n, :spaces
+
+  def self.authenticate(username, password)
+    auth_user = first(username: username)
+    auth_user.password == password ? auth_user : nil
+  end
 end
