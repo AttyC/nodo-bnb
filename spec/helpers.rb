@@ -30,5 +30,4 @@ def two_users_sign_up_and_login_and_book_a_space
   fill_in 'username', with: 'Bob'
   fill_in 'password', with: 'Bobrules'
   click_button 'login'
-
 end
