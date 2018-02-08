@@ -27,5 +27,7 @@ feature 'Saving booking' do
    click_button('space2')
    expect(Space.first.booking).to eq('available')
    expect(Space.last.booking).to eq('pending')
+   expect(page).to have_text('Successfully requested booking')
  end
+
 end
