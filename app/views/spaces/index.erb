@@ -11,6 +11,7 @@
         <th>Description</th>
         <th>Price</th>
         <th>date from</th>
+        <th>end date</th>
       </tr>
       <% @space.each do |space| %>
       <tr>
@@ -18,5 +19,6 @@
         <td><%= space.description %></td>
         <td><%= space.price %></td>
         <td><%= space.from_date.strftime("%d-%m-%Y") %></td>
+        <td><%= space.to_date.strftime("%d-%m-%Y") %></td>
       </tr>
       <% end %>

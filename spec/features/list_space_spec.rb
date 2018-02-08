@@ -22,9 +22,10 @@ feature 'View new space' do
     expect(page).to have_text('100')
   end
 
-  scenario 'see\'s first date avaliable' do
+  scenario 'see\'s start date and end date that space is avaliable' do
      fill_in_listing
      click_button 'List my space'
      expect(page).to have_text('12-10-2018')
+     expect(page).to have_text('19-10-2018')
   end
 end
