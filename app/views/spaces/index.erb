@@ -22,7 +22,7 @@
         <td><%= space.end_date %></td>
         <td><%= space.avaliable_days%> days</td>
         <td><form action="/spaces/<%= space.id %>" method="post">
-          <input type ='hidden' name = 'space' value= '<%= space.id %>' >
+          <input type="hidden" name="_method" value="patch" />
           <input type="submit" value="Book" id='space<%= space.id %>' >
         </form> </td>
       </tr>
