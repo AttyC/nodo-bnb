@@ -59,7 +59,10 @@ class Nodo < Sinatra::Base
 
   post '/spaces/new' do
     get_user
-    if !@user.nil?
+    if @user.nil?
+      flash.keep[:notice] = 'Please log in to list a space'
+      redirect to '/login'
+    else
       Space.create(
         name: params[:name],
         description: params[:description],
@@ -68,12 +71,14 @@ class Nodo < Sinatra::Base
         to_date: params[:to_date],
         user_id: session[:id]
       )
-      flash.next[:notice] = 'Your space is listed'
+      flash.keep[:notice] = 'Your space is listed'
       redirect to '/spaces'
-    else
-      flash.keep[:notice] = 'Please log in to list a space'
-      redirect to '/login'
     end
+  end
+
+  get '/spaces/:id' do
+    @space = Space.all(user_id: session[:id])
+    erb :'spaces/owner'
   end
 
   patch '/spaces/:id' do
@@ -94,10 +99,5 @@ class Nodo < Sinatra::Base
     space.update(booking: 'booked')
     flash.keep[:notice] = 'Booking approved'
     redirect to '/bookings'
-  end
-
-  get '/spaces/:id' do
-    @space = Space.all(user_id: session[:id])
-    erb :'spaces/owner'
   end
 end

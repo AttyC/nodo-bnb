@@ -9,10 +9,7 @@ class User
 
   def self.authenticate(username, password)
     auth_user = first(username: username)
-    if auth_user.nil?
-      nil
-    else
-      auth_user.password == password ? auth_user : nil
-    end
+    return nil if auth_user.nil?
+    auth_user.password == password ? auth_user : nil
   end
 end
