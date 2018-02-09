@@ -12,11 +12,7 @@ feature 'Saving booking' do
     DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
-    fill_in_listing(name: 'Anything',
-                    description: 'The best place!',
-                    price: '10',
-                    from_date: '16/03/2018',
-                    to_date: '16/04/2018')
+    fill_in_with_st_pauls
     click_button('space2')
     expect(Space.first.booking).to eq('available')
     expect(Space.last.booking).to eq('pending')

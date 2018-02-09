@@ -27,6 +27,22 @@ def login(username: 'Fran', password: 'password')
   click_button 'login'
 end
 
+def fill_in_with_makers
+  fill_in_listing(name: 'Makers Academy',
+                  description: 'We love a good diagram!',
+                  price: '8000',
+                  from_date: '02/01/2018',
+                  to_date: '16/03/2018')
+end
+
+def fill_in_with_st_pauls
+  fill_in_listing(name: 'St Pauls',
+                  description: 'The best place!',
+                  price: '10',
+                  from_date: '16/03/2018',
+                  to_date: '16/04/2018')
+end
+
 def logout
   click_button 'Logout'
 end

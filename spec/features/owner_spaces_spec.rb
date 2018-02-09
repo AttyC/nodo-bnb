@@ -4,11 +4,7 @@ feature 'User can see all their listed spaces' do
     fill_in_listing
     click_button 'Logout'
     signup(username: 'Bob', password: '123')
-    fill_in_listing(name: 'Anything',
-                    description: 'The best place!',
-                    price: '10',
-                    from_date: '16/03/2018',
-                    to_date: '16/04/2018')
+    fill_in_with_st_pauls
     click_button 'See all Bob\'s spaces'
     expect(page).to have_text('The best place!')
     expect(page).not_to have_text('My house')
