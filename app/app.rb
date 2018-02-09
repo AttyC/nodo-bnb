@@ -82,4 +82,9 @@ class Nodo < Sinatra::Base
     flash.keep[:notice] = 'Successfully requested booking'
     redirect to '/spaces'
   end
+
+  post '/spaces/:id' do
+   @space = Space.all(:user_id => params[:id])
+   erb :'spaces/owner'
+ end
 end

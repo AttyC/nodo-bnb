@@ -21,7 +21,7 @@ def sign_up_and_login(password = 'password')
 end
 
 def two_users_sign_up_and_login_and_book_a_space
-  sign_up_and_login('password')
+  sign_up_and_login
   fill_in_listing
   click_button 'List my space'
   click_button 'Logout'
