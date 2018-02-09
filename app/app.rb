@@ -82,4 +82,9 @@ class Nodo < Sinatra::Base
     flash.keep[:notice] = 'Successfully requested booking'
     redirect to '/spaces'
   end
+
+  get '/bookings/user' do
+    @space = Space.all
+    erb :'bookings/bookings'
+  end
 end

@@ -1,0 +1,16 @@
+<table id="bookings">
+      <caption>My requests</caption>
+      <tr>
+        <th>Name</th>
+        <th>Approve</th>
+      </tr>
+      <% @space.each do |space| %>
+      <tr>
+        <td><%= space.name %></td>
+        <!-- <td><form action="/spaces/<%= space.id %>" method="post">
+          <input type="hidden" name="_method" value="patch" />
+          <input type="submit" value="Book" id='space<%= space.id %>' >
+        </form> </td> -->
+      </tr>
+      <% end %>
+</table>
