@@ -2,9 +2,7 @@ feature 'approve single booking' do
   before do
     DatabaseCleaner.clean_with(:truncation)
     signup
-    login
     fill_in_listing
-    click_button 'List my space'
     logout
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
@@ -24,7 +22,6 @@ feature 'approve single booking' do
     expect(page).to have_content 'Booking approved'
     expect(page).not_to have_content 'My house'
   end
-
 end
 
 feature 'filters out unrequested bookings' do
@@ -32,20 +29,15 @@ feature 'filters out unrequested bookings' do
     DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
-    click_button 'List my space'
-    fill_in_listing(name: 'Anything',
-                    description: 'The best place!',
-                    price: '10',
-                    from_date: '16/03/2018',
-                    to_date: '16/04/2018')
-    click_button 'List my space'
+    fill_in_with_st_pauls
     logout
-    signup(username: 'John' , password: 'password')
+    signup(username: 'John', password: 'password')
+    fill_in_with_makers
+    click_button('space2')
+    logout
   end
 
   scenario 'approving a booking' do
-    click_button('space2')
-    logout
     login
     click_link 'Booking Requests'
     click_button 'Approve'
@@ -57,46 +49,13 @@ feature 'filters out unrequested bookings' do
   end
 
   scenario 'another user signs in' do
-   fill_in_listing(name: 'Makers Academy',
-                   description: 'We love a good diagram!',
-                   price: '8000',
-                   from_date: '02/01/2018',
-                   to_date: '16/03/2018')
-    click_button 'List my space'
-    click_button('space2')
-    logout
     signup(username: 'EdW', password: 'Confused')
     click_button('space3')
     logout
     login
     click_link 'Booking Requests'
     expect(page).not_to have_content 'Makers'
-    expect(page).to have_content 'Anything'
-  end
-end
-
-feature 'Only displaying unapproved spaces for booking' do
-  scenario 'After a place is book and approved it should disappear' do
-    DatabaseCleaner.clean_with(:truncation)
-    signup
-    fill_in_listing
-    click_button 'List my space'
-    fill_in_listing(name: 'Makers Academy',
-                    description: 'We love a good diagram!',
-                    price: '8000',
-                    from_date: '02/01/2018',
-                    to_date: '16/03/2018')
-    click_button 'List my space'
-    logout
-    signup(username: 'dom', password: 'tom')
-    click_button('space2')
-    logout
-    login
-    click_link 'Booking Requests'
-    click_button 'Approve'
-    click_link 'View spaces'
-    expect(page).to have_content 'My house'
-    expect(page).not_to have_content 'Makers Academy'
+    expect(page).to have_content 'St Pauls'
   end
 end
 
@@ -105,13 +64,7 @@ feature 'Shoppers have their bookings confirmed' do
     DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
-    click_button 'List my space'
-    fill_in_listing(name: 'Makers Academy',
-                    description: 'We love a good diagram!',
-                    price: '8000',
-                    from_date: '02/01/2018',
-                    to_date: '16/03/2018')
-    click_button 'List my space'
+    fill_in_with_makers
     click_button 'Logout'
     signup(username: 'dom', password: 'tom')
     click_button 'space1'
@@ -120,9 +73,10 @@ feature 'Shoppers have their bookings confirmed' do
     login
     click_link 'Booking Requests'
     click_button 'booking2'
-    click_button 'Logout'
+    logout
     login(username: 'dom', password: 'tom')
     click_link 'Booking Requests'
+
     within '#requests' do
       within '#request1' do
         expect(page).to have_content 'My house'
@@ -131,7 +85,7 @@ feature 'Shoppers have their bookings confirmed' do
 
       within '#request2' do
         expect(page).to have_content 'Makers Academy'
-        expect(page).to have_content 'booked'      
+        expect(page).to have_content 'booked'
       end
     end
   end
