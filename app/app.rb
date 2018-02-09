@@ -49,7 +49,7 @@ class Nodo < Sinatra::Base
 
   get '/spaces' do
     get_user
-    @space = Space.all
+    @space = Space.all(:booking.not => 'booked')
     erb :'spaces/index'
   end
 
@@ -82,4 +82,21 @@ class Nodo < Sinatra::Base
     flash.keep[:notice] = 'Successfully requested booking'
     redirect to '/spaces'
   end
+
+  get '/bookings' do
+    @space = Space.all(:booking => 'pending', :user_id => session[:id])
+    erb :'bookings/bookings'
+  end
+
+  patch '/bookings/:id' do
+    space = Space.get(params[:id])
+    space.update(booking: 'booked')
+    flash.keep[:notice] = 'Booking approved'
+    redirect to '/bookings'
+  end
+
+  post '/spaces/:id' do
+   @space = Space.all(:user_id => params[:id])
+   erb :'spaces/owner'
+ end
 end

@@ -1,12 +1,16 @@
 feature 'login' do
   scenario 'user logs in' do
-    sign_up_and_login
+    signup
+    login
     expect(page).to have_text('Hello, Fran!')
   end
 
   scenario 'user uses wrong password' do
-    password = 'doggy'
-    sign_up_and_login(password)
+    signup
+    visit('/login')
+    fill_in 'username', with: 'Fran'
+    fill_in 'password', with: 'doggy'
+    click_button 'login'
     expect(page).to have_text('Please enter the correct login details')
   end
 end
