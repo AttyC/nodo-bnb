@@ -1,8 +1,6 @@
 feature 'Saving booking' do
-
   scenario 'Space has status pending' do
     signup
-    login
     fill_in_listing
     click_button 'Logout'
     signup(username: 'bob', password: 'Bobrules')
@@ -13,7 +11,6 @@ feature 'Saving booking' do
   scenario 'book one of multiple spaces' do
     DatabaseCleaner.clean_with(:truncation)
     signup
-    login
     fill_in_listing
     fill_in_listing(name: 'Anything',
                     description: 'The best place!',

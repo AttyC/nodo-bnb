@@ -2,7 +2,6 @@ feature 'approve single booking' do
   before do
     DatabaseCleaner.clean_with(:truncation)
     signup
-    login
     fill_in_listing
     logout
     signup(username: 'bob', password: 'Bobrules')

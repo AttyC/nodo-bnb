@@ -8,7 +8,6 @@ end
 feature 'list space' do
   before do
     signup
-    login
     fill_in_listing
   end
 
@@ -26,7 +25,6 @@ end
 feature 'Store space in database' do
   scenario 'user creates a new space' do
     signup
-    login
     expect { fill_in_listing }.to change(Space, :count).by 1
   end
 end
@@ -34,7 +32,6 @@ end
 feature 'View new space' do
   scenario 'user can view a new space' do
     signup
-    login
     fill_in_listing
     expect(page).to have_text('Fran')
     expect(page).to have_text('Nice place!')
@@ -43,7 +40,6 @@ feature 'View new space' do
 
   scenario 'sees start date and end date that space is avaliable' do
     signup
-    login
     fill_in_listing
     expect(page).to have_text('12-10-2018')
     expect(page).to have_text('19-10-2018')
@@ -51,7 +47,6 @@ feature 'View new space' do
 
   scenario 'You can see how many days a space is avaliable' do
     signup
-    login
     fill_in_listing
     expect(page).to have_text('7 days')
   end

@@ -1,7 +1,6 @@
 feature 'Listing multiple spaces' do
   scenario 'A user can list multiple spaces' do
     signup
-    login
     fill_in_listing
     fill_in_listing(name: 'Anything',
                     description: 'The best place!',
