@@ -10,6 +10,7 @@ def fill_in_listing(name: 'My house',
   fill_in :price, with: price
   fill_in :from_date, with: from_date
   fill_in :to_date, with: to_date
+  click_button 'List my space'
 end
 
 def signup(username: 'Fran', password: 'password')

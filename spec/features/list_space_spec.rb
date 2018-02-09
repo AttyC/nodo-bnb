@@ -1,7 +1,6 @@
 feature 'log in to list space' do
   scenario 'user has to log in to list a new space' do
     fill_in_listing
-    click_button 'List my space'
     expect(page).to have_text('Please log in to list a space')
   end
 end
@@ -11,7 +10,6 @@ feature 'list space' do
     signup
     login
     fill_in_listing
-    click_button 'List my space'
   end
 
   scenario 'user lists a new space' do
@@ -29,8 +27,7 @@ feature 'Store space in database' do
   scenario 'user creates a new space' do
     signup
     login
-    fill_in_listing
-    expect { click_button('List my space') }.to change(Space, :count).by 1
+    expect { fill_in_listing }.to change(Space, :count).by 1
   end
 end
 
@@ -39,7 +36,6 @@ feature 'View new space' do
     signup
     login
     fill_in_listing
-    click_button 'List my space'
     expect(page).to have_text('Fran')
     expect(page).to have_text('Nice place!')
     expect(page).to have_text('100')
@@ -49,7 +45,6 @@ feature 'View new space' do
     signup
     login
     fill_in_listing
-    click_button 'List my space'
     expect(page).to have_text('12-10-2018')
     expect(page).to have_text('19-10-2018')
   end
@@ -58,7 +53,6 @@ feature 'View new space' do
     signup
     login
     fill_in_listing
-    click_button 'List my space'
     expect(page).to have_text('7 days')
   end
 end

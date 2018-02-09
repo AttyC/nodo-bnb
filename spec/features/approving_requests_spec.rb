@@ -4,7 +4,6 @@ feature 'approve single booking' do
     signup
     login
     fill_in_listing
-    click_button 'List my space'
     logout
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
@@ -32,13 +31,11 @@ feature 'filters out unrequested bookings' do
     DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
-    click_button 'List my space'
     fill_in_listing(name: 'Anything',
                     description: 'The best place!',
                     price: '10',
                     from_date: '16/03/2018',
                     to_date: '16/04/2018')
-    click_button 'List my space'
     logout
     signup(username: 'John' , password: 'password')
   end
@@ -62,7 +59,6 @@ feature 'filters out unrequested bookings' do
                    price: '8000',
                    from_date: '02/01/2018',
                    to_date: '16/03/2018')
-    click_button 'List my space'
     click_button('space2')
     logout
     signup(username: 'EdW', password: 'Confused')
@@ -80,13 +76,11 @@ feature 'Only displaying unapproved spaces for booking' do
     DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
-    click_button 'List my space'
     fill_in_listing(name: 'Makers Academy',
                     description: 'We love a good diagram!',
                     price: '8000',
                     from_date: '02/01/2018',
                     to_date: '16/03/2018')
-    click_button 'List my space'
     logout
     signup(username: 'dom', password: 'tom')
     click_button('space2')
@@ -105,13 +99,11 @@ feature 'Shoppers have their bookings confirmed' do
     DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
-    click_button 'List my space'
     fill_in_listing(name: 'Makers Academy',
                     description: 'We love a good diagram!',
                     price: '8000',
                     from_date: '02/01/2018',
                     to_date: '16/03/2018')
-    click_button 'List my space'
     click_button 'Logout'
     signup(username: 'dom', password: 'tom')
     click_button 'space1'
@@ -131,7 +123,7 @@ feature 'Shoppers have their bookings confirmed' do
 
       within '#request2' do
         expect(page).to have_content 'Makers Academy'
-        expect(page).to have_content 'booked'      
+        expect(page).to have_content 'booked'
       end
     end
   end
