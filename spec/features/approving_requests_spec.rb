@@ -15,11 +15,9 @@ feature 'approving signup' do
   end
 
   scenario 'approving a booking' do
-    p Space.all
     click_button 'Approve'
     expect(Space.first.booking).to eq('booked')
     expect(page).to have_content 'Booking approved'
     expect(page).not_to have_content 'My house'
   end
-
 end

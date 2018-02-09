@@ -12,16 +12,23 @@ def fill_in_listing(name: 'My house',
   fill_in :to_date, with: to_date
 end
 
-def sign_up_and_login(password = 'password')
-  User.create(username: 'Fran', password: 'password')
+def signup(username: 'Fran', password: 'password')
+  visit '/'
+  fill_in 'username', with: username
+  fill_in 'password', with: password
+  click_button 'Submit'
+end
+
+def login(username: 'Fran', password: 'password')
   visit('/login')
-  fill_in 'username', with: 'Fran'
+  fill_in 'username', with: username
   fill_in 'password', with: password
   click_button 'login'
 end
 
 def two_users_sign_up_and_login_and_book_a_space
-  sign_up_and_login('password')
+  signup
+  login
   fill_in_listing
   click_button 'List my space'
   click_button 'Logout'
