@@ -11,8 +11,22 @@
         <td><%= User.get(space.requester).username %></td>
          <td><form action="/bookings/<%= space.id %>" method="post">
           <input type="hidden" name="_method" value="patch" />
-          <input type="submit" value="Approve" id='space<%= space.id %>' >
+          <input type="submit" value="Approve" id='booking<%= space.id %>' >
         </form> </td>
+      </tr>
+      <% end %>
+</table>
+
+<table id="requests">
+      <caption>My requests</caption>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
+      <% @requests.each do |request| %>
+      <tr id="request<%= request.id %>">
+        <td><%= request.name %></td>
+        <td><%= request.booking %></td>
       </tr>
       <% end %>
 </table>
