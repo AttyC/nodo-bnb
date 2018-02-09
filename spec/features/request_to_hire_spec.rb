@@ -13,7 +13,7 @@ feature 'Saving booking' do
   scenario 'book one of multiple spaces' do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
-    sign_up_and_login('password')
+    sign_up_and_login
     fill_in_listing
     click_button 'List my space'
     fill_in_listing(name: 'Anything',
