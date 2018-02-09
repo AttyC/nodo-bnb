@@ -1,7 +1,6 @@
 feature 'login' do
   scenario 'user logs in' do
     signup
-    login
     expect(page).to have_text('Hello, Fran')
   end
 
