@@ -71,11 +71,8 @@ feature 'Shoppers have their bookings confirmed' do
     click_button 'space2'
     logout
     login
-    save_and_open_page
     click_link 'Booking Requests'
-    save_and_open_page
     click_button 'booking2'
-    save_and_open_page
     logout
     login(username: 'dom', password: 'tom')
     click_link 'Booking Requests'
