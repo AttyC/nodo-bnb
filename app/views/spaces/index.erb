@@ -1,8 +1,8 @@
-<% if @user %>
-  <h2>Hello, <%= @user.username %>!</h2>
-<% end %>
+  <% if @user %>
+    <h2>Hello, <%= @user.username %>!</h2>
+  <% end %>
 
-<table id="listings">
+  <table id="listings">
       <caption>Listing space</caption>
       <tr>
         <th>Name</th>
@@ -11,7 +11,7 @@
         <th>Date from</th>
         <th>End date</th>
         <th>Number of days avaliable</th>
-        <th>Owner</th>                   
+        <th>Owner</th>
         <th>Book</th>
       </tr>
       <% @space.each do |space| %>
@@ -32,4 +32,3 @@
 </table>
 
 <a href="/spaces/new">Add a new space</a>
-

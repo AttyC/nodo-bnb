@@ -1,0 +1,60 @@
+body{
+  text-align: center;
+  font-family: Helvetica;
+  line-height: 200%;
+  background-color: #e6e6e6;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+.jumbotron {
+    background: url("/img/nathan-fertig-249917.jpg") no-repeat fixed;
+    background-size: cover;
+    padding: 10em;
+}
+table {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+}
+
+th {
+  background-color: #ffcc00;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+tr:nth-child(odd) {
+   background-color: #fff;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+}
+
+input[type=text] {
+    width: 200px;
+    padding: 8px 15px;
+    margin: 8px 0;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 200px;
+    padding: 8px 15px;
+    margin: 8px 0;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+button {
+  background-color: #ffcc00;
+}
