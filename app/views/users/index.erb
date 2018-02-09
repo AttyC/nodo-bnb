@@ -1,8 +1,8 @@
 <% if @user %>
-  <h2>Welcome to NodoBnB, <%= @user.username %></h2>
+  <h3>Welcome to NodoBnB, <%= @user.username %></h3>
 <% end %>
 
-<h1> Hello, welcome to sign up! </h1>
+<h3> Sign up for access to find exciting places to stay</h3>
 
 <form action="/user/new" method="post">
   <label for="username">Name:
@@ -13,8 +13,3 @@
   </label>
   <input type="submit" value="Submit">
 </form>
-
-
-<a href="/spaces">See all the listed spaces</a>
-<br>
-<a href="/spaces/new">Add a new space</a>

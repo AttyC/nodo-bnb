@@ -1,0 +1,97 @@
+body{
+  text-align: center;
+  font-family: Helvetica;
+  line-height: 200%;
+  background-color: #e6e6e6;
+  font-size: 15px;
+}
+footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.jumbotron {
+    background: url("/img/nathan-fertig-249917.jpg") no-repeat fixed;
+    background-size: cover;
+    padding: 10em;
+}
+table {
+  width: 90%;
+  margin: auto;
+  background-color: white;
+}
+
+th {
+  /* background-color: #ffcc00; */
+  background-color: #22adba;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+tr:nth-child(odd) {
+   background-color: #fff;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+}
+
+input[type=text] {
+    width: 200px;
+    padding: 4px 15px;
+    margin: 8px 0;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 200px;
+    padding: 4px 15px;
+    margin: 8px 0;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+input, select, textarea{
+    color: #21868e;
+}
+
+button {
+  background-color: #22adba;
+  border-radius: 10px;
+}
+
+#nav-bar-title {
+  border: none;
+}
+.navbar {
+  background-color: rgba(33, 134, 142, 0.7);
+}
+
+.navbar a {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+.navbar a:hover {
+  background: #fff;
+  color: #22adba;
+}
+.navbar-right li {
+  margin: 10px;
+}
+
+.flash {
+  font-size: 1.5em;
+  color: #22adba;
+  background: #fff;
+}

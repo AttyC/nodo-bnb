@@ -6,7 +6,7 @@ feature 'Saving booking' do
   end
 
   scenario 'Space has status pending' do
-    click_button 'Logout'
+    logout
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
     expect(Space.first.booking).to eq('pending')

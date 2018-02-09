@@ -1,26 +1,95 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/nodo.css">
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+    <script src="../js/scripts.js"></script>
+
     <title>Nodo BnB</title>
-    <link rel="stylesheet" type="text/css" href="/nodo.css">
   </head>
   <body>
     <header>
-      <form method="post" action="/logout">
-        <input value="Logout" type="submit" />
-        <input type="hidden" name="_method" value="delete" />
-      </form>
-      <a href="/bookings">Booking Requests</a>
-      <a href="/spaces">View spaces</a>
+    <nav class="navbar navbar-expand-md fixed-top">
+      <a class="navbar-brand" href="#" id="nav-bar-title">Nodo BnB</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <% if flash[:notice] %>
-        <%= flash[:notice] %>
-      <% end %>
-    </header>
-    <h1>Nodo BnB</h1>
-    <section id="main">
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav navbar-left">
+
+          <% if @user.nil? %>
+            <li class="nav-item active">
+              <form method="get" action="/login" class="nav-link">
+                  <input value="Log In" type="submit" />
+              </form>
+              <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item active">
+              <form method="get" action="/" class="nav-link">
+                  <input value="Sign Up" type="submit" />
+              </form>
+              <span class="sr-only">(current)</span>
+            </li>
+          <% else  %>
+            <li class="nav-item">
+              <form method="post" action="/logout" class="nav-link">
+                <input value="Log Out" type="submit" />
+                <input type="hidden" name="_method" value="delete" />
+              </form>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/bookings">Booking Requests</a></li>
+          <li><a href="/spaces">View Spaces</a></li>
+          <li><a href="/spaces/new">Add a New Space</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+    <main role="main">
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Nodo BnB</h1>
+          <h4>To best place to come for the best places to stay</h4>
+        </div>
+      </div>
+
+      <div class="flash">
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
+        <% end %>
+      </div>
+
       <%= yield %>
-    </section>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p class="copyright">&copy; Team Nodo 2018</p>
+      <p class"credit">Photo by Nathan Fertig on Unsplash</p>
+    </footer>
   </body>
 </html>

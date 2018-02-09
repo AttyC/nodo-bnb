@@ -1,13 +1,8 @@
-<% if @user %>
-  <h2>Hello, <%= @user.username %>!</h2>
-<% end %>
+  <% if @user %>
+    <h2>Hello, <%= @user.username %></h2>
+  <% end %>
 
-<form action="/spaces/<%= @user.id %>" method="get">
- <input type="submit" value="See all <%= @user.username %>'s spaces">
-</form>
-
-<table id="listings">
-      <caption>Listing space</caption>
+  <table id="listings">
       <tr>
         <th>Name</th>
         <th>Description</th>
@@ -34,5 +29,3 @@
       </tr>
       <% end %>
 </table>
-
-<a href="/spaces/new">Add a new space</a>
