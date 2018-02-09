@@ -88,8 +88,8 @@ class Nodo < Sinatra::Base
     erb :'bookings/bookings'
   end
 
-  patch '/bookings' do
-    space = Space.first
+  patch '/bookings/:id' do
+    space = Space.get(params[:id])
     space.update(booking: 'booked')
     flash.keep[:notice] = 'Booking approved'
     redirect to '/bookings'

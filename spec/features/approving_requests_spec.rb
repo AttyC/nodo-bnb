@@ -1,4 +1,4 @@
-feature 'approving signup' do
+feature 'approve single booking' do
   before do
     DatabaseCleaner.clean_with(:truncation)
     two_users_sign_up_and_login_and_book_a_space
@@ -10,11 +10,11 @@ feature 'approving signup' do
     click_link 'Booking Requests'
   end
 
-  scenario 'a user can approve a booking' do
+  scenario 'a lister can see a booking request has been made' do
     expect(page).to have_content 'My house'
   end
 
-  scenario 'approving a booking' do
+  scenario 'a lister can approve a booking' do
     click_button 'Approve'
     expect(Space.first.booking).to eq('booked')
     expect(page).to have_content 'Booking approved'
@@ -23,7 +23,7 @@ feature 'approving signup' do
 
 end
 
-feature 'approving signup with multiple properties' do
+feature 'filters out unrequested bookings' do
   before do
     DatabaseCleaner.clean_with(:truncation)
     signup
@@ -37,15 +37,18 @@ feature 'approving signup with multiple properties' do
     click_button 'List my space'
     click_button 'Logout'
     signup(username: 'John' , password: 'password')
-    click_button('space1')
+    click_button('space2')
     click_button 'Logout'
     login
     click_link 'Booking Requests'
   end
 
   scenario 'approving a booking' do
-
-    expect(page).to have_content 'My house'
+    click_button 'Approve'
+    expect(Space.get(2).booking).to eq('booked')
+    expect(Space.get(1).booking).to eq 'available'
+    expect(page).to have_content 'Booking approved'
+    expect(page).not_to have_content 'My house'
     expect(page).not_to have_content 'Anything'
   end
 end
