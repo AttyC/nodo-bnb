@@ -5,7 +5,7 @@ feature 'Saving booking' do
     login
     fill_in_listing
     click_button 'List my space'
-    click_button 'Logout'
+    click_button 'Log Out'
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
     expect(Space.first.booking).to eq('pending')
