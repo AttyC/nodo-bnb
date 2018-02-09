@@ -8,7 +8,7 @@
       <% @space.each do |space| %>
       <tr>
         <td><%= space.name %></td>
-        <td><%= space.requester %></td>
+        <td><%= User.get(space.requester).username %></td>
          <td><form action="/bookings/<%= space.id %>" method="post">
           <input type="hidden" name="_method" value="patch" />
           <input type="submit" value="Approve" id='space<%= space.id %>' >
