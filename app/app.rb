@@ -84,8 +84,8 @@ class Nodo < Sinatra::Base
   end
 
   get '/bookings' do
-    @space = Space.all(:booking => 'pending', :user_id => session[:id])
-    @requests = Space.all(:requester => session[:id])
+    @space = Space.all(booking: 'pending', user_id: session[:id])
+    @requests = Space.all(requester: session[:id])
     erb :'bookings/bookings'
   end
 
@@ -96,8 +96,8 @@ class Nodo < Sinatra::Base
     redirect to '/bookings'
   end
 
-  post '/spaces/:id' do
-   @space = Space.all(:user_id => params[:id])
-   erb :'spaces/owner'
- end
+  get '/spaces/:id' do
+    @space = Space.all(user_id: session[:id])
+    erb :'spaces/owner'
+  end
 end

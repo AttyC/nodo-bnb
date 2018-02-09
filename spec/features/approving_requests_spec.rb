@@ -31,7 +31,7 @@ feature 'filters out unrequested bookings' do
     fill_in_listing
     fill_in_with_st_pauls
     logout
-    signup(username: 'John' , password: 'password')
+    signup(username: 'John', password: 'password')
     fill_in_with_makers
     click_button('space2')
     logout
