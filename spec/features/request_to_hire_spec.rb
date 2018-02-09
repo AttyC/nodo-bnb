@@ -1,7 +1,11 @@
 feature 'Saving booking' do
-  scenario 'Space has status pending' do
+  before do
+    DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
+  end
+
+  scenario 'Space has status pending' do
     click_button 'Logout'
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
@@ -9,9 +13,6 @@ feature 'Saving booking' do
   end
 
   scenario 'book one of multiple spaces' do
-    DatabaseCleaner.clean_with(:truncation)
-    signup
-    fill_in_listing
     fill_in_with_st_pauls
     click_button('space2')
     expect(Space.first.booking).to eq('available')
