@@ -7,7 +7,8 @@ body{
 }
 footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 .jumbotron {
     background: url("/img/nathan-fertig-249917.jpg") no-repeat fixed;
@@ -67,7 +68,6 @@ button {
 }
 
 #nav-bar-title {
-  /* color: #21868e; */
   border: none;
 }
 .navbar {
@@ -75,15 +75,23 @@ button {
 }
 
 .navbar a {
-  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
-  border-style: solid;
-  border-width: 1px;
-  padding: 1px 7px 2px;
+  padding: 5px 10px;
   text-decoration: none;
   color: #fff;
   display: block;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+.navbar a:hover {
+  background: #fff;
+  color: #22adba;
 }
 .navbar-right li {
   margin: 10px;
+}
+
+.flash {
+  font-size: 1.5em;
+  color: #22adba;
+  background: #fff;
 }

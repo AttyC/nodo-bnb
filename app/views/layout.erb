@@ -26,11 +26,6 @@
   </head>
   <body>
     <header>
-      <% if flash[:notice] %>
-        <%= flash[:notice] %>
-      <% end %>
-    </header>
-
     <nav class="navbar navbar-expand-md fixed-top">
       <a class="navbar-brand" href="#" id="nav-bar-title">Nodo BnB</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,14 +38,20 @@
           <% if @user.nil? %>
             <li class="nav-item active">
               <form method="get" action="/login" class="nav-link">
-                  <input value="Login" type="submit" />
+                  <input value="Log In" type="submit" />
+              </form>
+              <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item active">
+              <form method="get" action="/" class="nav-link">
+                  <input value="Sign Up" type="submit" />
               </form>
               <span class="sr-only">(current)</span>
             </li>
           <% else  %>
             <li class="nav-item">
               <form method="post" action="/logout" class="nav-link">
-                <input value="Logout" type="submit" />
+                <input value="Log Out" type="submit" />
                 <input type="hidden" name="_method" value="delete" />
               </form>
             </li>
@@ -58,20 +59,26 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/bookings">Booking Requests</a></li>
-          <li><a href="/spaces">View spaces</a></li>
-          <li><a href="/spaces/new">Add a new space</a></li>
+          <li><a href="/spaces">View Spaces</a></li>
+          <li><a href="/spaces/new">Add a New Space</a></li>
         </ul>
       </div>
     </nav>
+  </header>
 
     <main role="main">
-
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Nodo BnB</h1>
-          <h4>To best place to come for the best places to go</h4>
+          <h4>To best place to come for the best places to stay</h4>
         </div>
+      </div>
+
+      <div class="flash">
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
+        <% end %>
       </div>
 
       <%= yield %>
