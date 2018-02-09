@@ -15,6 +15,7 @@ feature 'approve single booking' do
 
   scenario 'a lister can see a booking request has been made' do
     expect(page).to have_content 'My house'
+    expect(page).to have_content 'bob'
   end
 
   scenario 'a lister can approve a booking' do
@@ -76,6 +77,7 @@ end
 
 feature 'Only displaying unapproved spaces for booking' do
   scenario 'After a place is book and approved it should disappear' do
+    DatabaseCleaner.clean_with(:truncation)
     signup
     fill_in_listing
     click_button 'List my space'
