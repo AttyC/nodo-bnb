@@ -3,6 +3,7 @@ body{
   font-family: Helvetica;
   line-height: 200%;
   background-color: #e6e6e6;
+  font-size: 15px;
 }
 footer {
   display: flex;
@@ -20,7 +21,8 @@ table {
 }
 
 th {
-  background-color: #ffcc00;
+  /* background-color: #ffcc00; */
+  background-color: #22adba;
 }
 
 tr:nth-child(even) {
@@ -41,7 +43,7 @@ th, td {
 
 input[type=text] {
     width: 200px;
-    padding: 8px 15px;
+    padding: 4px 15px;
     margin: 8px 0;
     border: 1px solid black;
     box-sizing: border-box;
@@ -49,12 +51,21 @@ input[type=text] {
 
 input[type=password] {
     width: 200px;
-    padding: 8px 15px;
+    padding: 4px 15px;
     margin: 8px 0;
     border: 1px solid black;
     box-sizing: border-box;
 }
 
+input, select, textarea{
+    color: #21868e;
+}
+
 button {
-  background-color: #ffcc00;
+  background-color: #22adba;
+  border-radius: 10px;
+}
+
+#nav-bar-title {
+  color: #21868e;
 }
