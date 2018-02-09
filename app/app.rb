@@ -84,7 +84,7 @@ class Nodo < Sinatra::Base
   end
 
   get '/bookings' do
-    @space = Space.all(:booking => 'pending')
+    @space = Space.all(:booking => 'pending', :user_id => session[:id])
     erb :'bookings/bookings'
   end
 

@@ -37,18 +37,36 @@ feature 'filters out unrequested bookings' do
     click_button 'List my space'
     click_button 'Logout'
     signup(username: 'John' , password: 'password')
+  end
+
+  scenario 'approving a booking' do
     click_button('space2')
     click_button 'Logout'
     login
     click_link 'Booking Requests'
-  end
-
-  scenario 'approving a booking' do
     click_button 'Approve'
     expect(Space.get(2).booking).to eq('booked')
     expect(Space.get(1).booking).to eq 'available'
     expect(page).to have_content 'Booking approved'
     expect(page).not_to have_content 'My house'
     expect(page).not_to have_content 'Anything'
+  end
+
+  scenario 'another user signs in' do
+   fill_in_listing(name: 'Makers Academy',
+                   description: 'We love a good diagram!',
+                   price: '8000',
+                   from_date: '02/01/2018',
+                   to_date: '16/03/2018')
+    click_button 'List my space'
+    click_button('space2')
+    click_button 'Logout'
+    signup(username: 'EdW', password: 'Confused')
+    click_button('space3')
+    click_button 'Logout'
+    login
+    click_link 'Booking Requests'
+    expect(page).not_to have_content 'Makers'
+    expect(page).to have_content 'Anything'
   end
 end
