@@ -2,11 +2,13 @@
       <caption>My requests</caption>
       <tr>
         <th>Name</th>
+        <th>Username<th>
         <th>Approve</th>
       </tr>
       <% @space.each do |space| %>
       <tr>
         <td><%= space.name %></td>
+        <td><%= space.requester %></td>
          <td><form action="/bookings/<%= space.id %>" method="post">
           <input type="hidden" name="_method" value="patch" />
           <input type="submit" value="Approve" id='space<%= space.id %>' >

@@ -78,7 +78,7 @@ class Nodo < Sinatra::Base
 
   patch '/spaces/:id' do
     space = Space.get(params[:id])
-    space.update(booking: 'pending')
+    space.update(booking: 'pending', requester: get_user.username)
     flash.keep[:notice] = 'Successfully requested booking'
     redirect to '/spaces'
   end
