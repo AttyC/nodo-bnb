@@ -20,4 +20,32 @@ feature 'approving signup' do
     expect(page).to have_content 'Booking approved'
     expect(page).not_to have_content 'My house'
   end
+
+end
+
+feature 'approving signup with multiple properties' do
+  before do
+    DatabaseCleaner.clean_with(:truncation)
+    signup
+    fill_in_listing
+    click_button 'List my space'
+    fill_in_listing(name: 'Anything',
+                    description: 'The best place!',
+                    price: '10',
+                    from_date: '16/03/2018',
+                    to_date: '16/04/2018')
+    click_button 'List my space'
+    click_button 'Logout'
+    signup(username: 'John' , password: 'password')
+    click_button('space1')
+    click_button 'Logout'
+    login
+    click_link 'Booking Requests'
+  end
+
+  scenario 'approving a booking' do
+
+    expect(page).to have_content 'My house'
+    expect(page).not_to have_content 'Anything'
+  end
 end
