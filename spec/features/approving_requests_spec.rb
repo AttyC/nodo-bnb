@@ -5,16 +5,17 @@ feature 'approve single booking' do
     login
     fill_in_listing
     click_button 'List my space'
-    click_button 'Logout'
+    logout
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
   end
 
   scenario 'a lister can see a booking request has been made' do
     expect(page).to have_content 'My house'
+    expect(page).to have_content 'bob'
   end
 
   scenario 'a lister can approve a booking' do
@@ -38,13 +39,13 @@ feature 'filters out unrequested bookings' do
                     from_date: '16/03/2018',
                     to_date: '16/04/2018')
     click_button 'List my space'
-    click_button 'Logout'
+    logout
     signup(username: 'John' , password: 'password')
   end
 
   scenario 'approving a booking' do
     click_button('space2')
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
     click_button 'Approve'
@@ -63,10 +64,10 @@ feature 'filters out unrequested bookings' do
                    to_date: '16/03/2018')
     click_button 'List my space'
     click_button('space2')
-    click_button 'Logout'
+    logout
     signup(username: 'EdW', password: 'Confused')
     click_button('space3')
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
     expect(page).not_to have_content 'Makers'
@@ -86,15 +87,52 @@ feature 'Only displaying unapproved spaces for booking' do
                     from_date: '02/01/2018',
                     to_date: '16/03/2018')
     click_button 'List my space'
-    click_button 'Logout'
+    logout
     signup(username: 'dom', password: 'tom')
     click_button('space2')
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
     click_button 'Approve'
     click_link 'View spaces'
     expect(page).to have_content 'My house'
     expect(page).not_to have_content 'Makers Academy'
+  end
+end
+
+feature 'Shoppers have their bookings confirmed' do
+  scenario 'User sees their booking was confirmed' do
+    DatabaseCleaner.clean_with(:truncation)
+    signup
+    fill_in_listing
+    click_button 'List my space'
+    fill_in_listing(name: 'Makers Academy',
+                    description: 'We love a good diagram!',
+                    price: '8000',
+                    from_date: '02/01/2018',
+                    to_date: '16/03/2018')
+    click_button 'List my space'
+    click_button 'Logout'
+    signup(username: 'dom', password: 'tom')
+    click_button 'space1'
+    click_button 'space2'
+    click_button 'Logout'
+    login
+    click_link 'Booking Requests'
+    click_button 'booking2'
+    click_button 'Logout'
+    login(username: 'dom', password: 'tom')
+    click_link 'Booking Requests'
+    within '#requests' do
+      within '#request1' do
+        expect(page).to have_content 'My house'
+        expect(page).to have_content 'pending'
+      end
+
+      within '#request2' do
+        expect(page).to have_content 'Makers Academy'
+        expect(page).to have_content 'booked'      
+      end
+    end
   end
 end

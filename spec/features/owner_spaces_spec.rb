@@ -1,6 +1,10 @@
 feature 'User can see all their listed spaces' do
   scenario 'user can see only their space(s)' do
-    two_users_sign_up_and_login_and_book_a_space
+    signup
+    fill_in_listing
+    click_button 'List my space'
+    click_button 'Logout'
+    signup(username: 'Bob', password: '123')
     fill_in_listing(name: 'Anything',
                     description: 'The best place!',
                     price: '10',

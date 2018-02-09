@@ -25,3 +25,7 @@ def login(username: 'Fran', password: 'password')
   fill_in 'password', with: password
   click_button 'login'
 end
+
+def logout
+  click_button 'Logout'
+end

@@ -7,6 +7,7 @@ class Space
   property :price, Float
   property :from_date, Date
   property :to_date, Date
+  property :requester, String
   property :booking, String, default: 'available'
 
   belongs_to :user, required: false
