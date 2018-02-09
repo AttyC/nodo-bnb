@@ -26,10 +26,6 @@
   </head>
   <body>
     <header>
-
-      <a href="/bookings">Booking Requests</a>
-      <a href="/spaces">View spaces</a>
-
       <% if flash[:notice] %>
         <%= flash[:notice] %>
       <% end %>
@@ -42,19 +38,28 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <form method="get" action="/login" class="nav-link">
-                <input value="Login" type="submit" />
-            </form>
-            <span class="sr-only">(current)</span>
-          </li>
-          <li class="nav-item">
-            <form method="post" action="/logout" class="nav-link">
-              <input value="Logout" type="submit" />
-              <input type="hidden" name="_method" value="delete" />
-            </form>
-          </li>
+        <ul class="navbar-nav navbar-left">
+
+          <% if @user.nil? %>
+            <li class="nav-item active">
+              <form method="get" action="/login" class="nav-link">
+                  <input value="Login" type="submit" />
+              </form>
+              <span class="sr-only">(current)</span>
+            </li>
+          <% else  %>
+            <li class="nav-item">
+              <form method="post" action="/logout" class="nav-link">
+                <input value="Logout" type="submit" />
+                <input type="hidden" name="_method" value="delete" />
+              </form>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/bookings">Booking Requests</a></li>
+          <li><a href="/spaces">View spaces</a></li>
+          <li><a href="/spaces/new">Add a new space</a></li>
         </ul>
       </div>
     </nav>
@@ -65,8 +70,7 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Nodo BnB</h1>
-          <p>Description Description Description Description .</p>
-
+          <h4>To best place to come for the best places to go</h4>
         </div>
       </div>
 

@@ -1,9 +1,9 @@
 /* This changes the nav from transparent to opaque and vice versa when scrolling down or up */
-var nav = $(".navbar");
+var nav = $("nav");
 $(window).scroll(function () {
   if ($(this).scrollTop() > 275) {
-  nav.css("background-color", "#292322");
+  nav.css("background-color", "#21868e;");
   } else {
-  nav.css("background-color", "rgba(41, 35, 35, 0.2)");
+  nav.css("background-color", "rgba(33, 134, 142, 0.2)");
   }
 });
