@@ -5,6 +5,7 @@ feature 'User can see all their listed spaces' do
     logout
     signup(username: 'Bob', password: '123')
     fill_in_with_st_pauls
+    save_and_open_page
     click_button 'See all Bob\'s spaces'
     expect(page).to have_text('The best place!')
     expect(page).not_to have_text('My house')
