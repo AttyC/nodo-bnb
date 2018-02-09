@@ -1,25 +1,29 @@
 <form action="/spaces/new" method="post">
   <label for="name">Name:
+    <br>
     <input type="text" name="name">
   </label>
   <br>
   <label for="description">Description:
-    <textarea name="description" rows="10" cols="50">
-      Please enter the description of the space.</textarea>
+    <br>
+    <textarea name="description" rows="10" cols="50" placeholder="Please enter the description of the space."></textarea>
   </label>
   <br>
   <label for="price">Price:
+    <br>
     <input type="text" name="price" placeholder="£">
   </label>
   <br>
-  <label for="from_date">Available from (DD/MM/YYYY):
+  <label for="from_date">Available from:
+    <br>
     <input type="date" name="from_date">
   </label>
   <br>
-  <label for="to_date">Available todo (DD/MM/YYYY):
+  <label for="to_date">Available to:
+    <br>
     <input type="date" name="to_date">
   </label>
-  <br>  
+  <br>
   <input type="submit" value="List my space">
 </form>
 
