@@ -49,7 +49,7 @@ class Nodo < Sinatra::Base
 
   get '/spaces' do
     get_user
-    @space = Space.all
+    @space = Space.all(:booking.not => 'booked')
     erb :'spaces/index'
   end
 

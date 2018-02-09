@@ -73,3 +73,27 @@ feature 'filters out unrequested bookings' do
     expect(page).to have_content 'Anything'
   end
 end
+
+feature 'Only displaying unapproved spaces for booking' do
+  scenario 'After a place is book and approved it should disappear' do
+    signup
+    fill_in_listing
+    click_button 'List my space'
+    fill_in_listing(name: 'Makers Academy',
+                    description: 'We love a good diagram!',
+                    price: '8000',
+                    from_date: '02/01/2018',
+                    to_date: '16/03/2018')
+    click_button 'List my space'
+    click_button 'Logout'
+    signup(username: 'dom', password: 'tom')
+    click_button('space2')
+    click_button 'Logout'
+    login
+    click_link 'Booking Requests'
+    click_button 'Approve'
+    click_link 'View spaces'
+    expect(page).to have_content 'My house'
+    expect(page).not_to have_content 'Makers Academy'
+  end
+end
