@@ -7,10 +7,10 @@
       <% @space.each do |space| %>
       <tr>
         <td><%= space.name %></td>
-        <!-- <td><form action="/spaces/<%= space.id %>" method="post">
+         <td><form action="/bookings" method="post">
           <input type="hidden" name="_method" value="patch" />
-          <input type="submit" value="Book" id='space<%= space.id %>' >
-        </form> </td> -->
+          <input type="submit" value="Approve" id='space<%= space.id %>' >
+        </form> </td>
       </tr>
       <% end %>
 </table>

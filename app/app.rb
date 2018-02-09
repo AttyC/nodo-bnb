@@ -83,8 +83,15 @@ class Nodo < Sinatra::Base
     redirect to '/spaces'
   end
 
-  get '/bookings/user' do
-    @space = Space.all
+  get '/bookings' do
+    @space = Space.all(:booking => 'pending')
     erb :'bookings/bookings'
+  end
+
+  patch '/bookings' do
+    space = Space.first
+    space.update(booking: 'booked')
+    flash.keep[:notice] = 'Booking approved'
+    redirect to '/bookings'
   end
 end
