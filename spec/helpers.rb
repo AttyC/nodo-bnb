@@ -44,5 +44,5 @@ def fill_in_with_st_pauls
 end
 
 def logout
-  click_button 'Logout'
+  click_button 'Log Out'
 end

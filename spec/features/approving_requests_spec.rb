@@ -65,14 +65,17 @@ feature 'Shoppers have their bookings confirmed' do
     signup
     fill_in_listing
     fill_in_with_makers
-    click_button 'Logout'
+    logout
     signup(username: 'dom', password: 'tom')
     click_button 'space1'
     click_button 'space2'
-    click_button 'Logout'
+    logout
     login
+    save_and_open_page
     click_link 'Booking Requests'
+    save_and_open_page
     click_button 'booking2'
+    save_and_open_page
     logout
     login(username: 'dom', password: 'tom')
     click_link 'Booking Requests'
