@@ -5,10 +5,10 @@ feature 'approve single booking' do
     login
     fill_in_listing
     click_button 'List my space'
-    click_button 'Logout'
+    logout
     signup(username: 'bob', password: 'Bobrules')
     click_button 'Book'
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
   end
@@ -39,13 +39,13 @@ feature 'filters out unrequested bookings' do
                     from_date: '16/03/2018',
                     to_date: '16/04/2018')
     click_button 'List my space'
-    click_button 'Logout'
+    logout
     signup(username: 'John' , password: 'password')
   end
 
   scenario 'approving a booking' do
     click_button('space2')
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
     click_button 'Approve'
@@ -64,10 +64,10 @@ feature 'filters out unrequested bookings' do
                    to_date: '16/03/2018')
     click_button 'List my space'
     click_button('space2')
-    click_button 'Logout'
+    logout
     signup(username: 'EdW', password: 'Confused')
     click_button('space3')
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
     expect(page).not_to have_content 'Makers'
@@ -87,10 +87,10 @@ feature 'Only displaying unapproved spaces for booking' do
                     from_date: '02/01/2018',
                     to_date: '16/03/2018')
     click_button 'List my space'
-    click_button 'Logout'
+    logout
     signup(username: 'dom', password: 'tom')
     click_button('space2')
-    click_button 'Logout'
+    logout
     login
     click_link 'Booking Requests'
     click_button 'Approve'
