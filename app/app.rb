@@ -77,8 +77,7 @@ class Nodo < Sinatra::Base
     end
   end
 
-  post '/spaces/:id' do
-    get_user
+  get '/spaces/:id' do
     @space = Space.all(user_id: session[:id])
     erb :'spaces/owner'
   end
