@@ -15,8 +15,11 @@ class Nodo < Sinatra::Base
     end
   end
 
-  get '/' do # this is the signup path
+  before do
     get_user
+  end
+
+  get '/' do # this is the signup path
     erb :'users/index'
   end
 
@@ -48,7 +51,6 @@ class Nodo < Sinatra::Base
   end
 
   get '/spaces' do
-    get_user
     @space = Space.all(:booking.not => 'booked')
     erb :'spaces/index'
   end
@@ -58,7 +60,6 @@ class Nodo < Sinatra::Base
   end
 
   post '/spaces/new' do
-    get_user
     if @user.nil?
       flash.keep[:notice] = 'Please log in to list a space'
       redirect to '/login'
@@ -89,7 +90,6 @@ class Nodo < Sinatra::Base
   end
 
   get '/bookings' do
-    get_user
     @space = Space.all(booking: 'pending', user_id: session[:id])
     @requests = Space.all(requester: session[:id])
     erb :'bookings/bookings'
