@@ -6,7 +6,8 @@ feature 'login' do
 
   scenario 'user uses wrong password' do
     signup
-    visit('/login')
+    logout
+    click_button 'Log In'
     fill_in 'username', with: 'Fran'
     fill_in 'password', with: 'doggy'
     click_button 'Log In'
