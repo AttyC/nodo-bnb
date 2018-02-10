@@ -16,7 +16,7 @@ Although we ended up going with ruby, we really liked the Italian (thanks @Giada
 *Note you need PSQL installed on your machine see [here](https://www.postgresql.org/)*
 
 ```
-Clone this repo (https://github.com/domvernon/nodo-bnb.git)[https://github.com/domvernon/nodo-bnb.git]
+Clone this repo https://github.com/domvernon/nodo-bnb.git
 Run bundle
 Run setup_db.rb
 Run rackup
