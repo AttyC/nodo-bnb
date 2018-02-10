@@ -2,6 +2,11 @@
     <h2>Hello, <%= @user.username %></h2>
   <% end %>
 
+  <form action="/spaces/<%= @user.id %>" method="post">
+  <input type="submit" value="See all <%= @user.username %>'s spaces" id="owner-space">
+  <input type="hidden" value="<% @user.id %>" />
+  </form>
+
   <table id="listings">
       <tr>
         <th>Name</th>

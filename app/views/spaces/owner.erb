@@ -2,26 +2,29 @@
   <h3>Nice to see you again, <%= @user.username %></h3>
 <% end %>
 
+  <form action="/spaces/<%= @user.id %>" method="post">
+  <input type="submit" value="See all <%= @user.username %>'s spaces" id="owner-space">
+  <input type="hidden" value="<% @user.id %>" />
+  </form>
 <table id="listings">
-      <caption>Listing space</caption>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price per night</th>
-        <th>Date from</th>
-        <th>End date</th>
-        <th>Number of days avaliable</th>
-        <th>Owner</th>
-      </tr>
-      <% @space.each do |space| %>
-      <tr>
-        <td><%= space.name %></td>
-        <td><%= space.description %></td>
-        <td><%= space.price %></td>
-        <td><%= space.start_date %></td>
-        <td><%= space.end_date %></td>
-        <td><%= space.avaliable_days%> days</td>
-        <td><%= User.get(space.user_id).username %></td>
-      </tr>
-      <% end %>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price per night</th>
+      <th>Date from</th>
+      <th>End date</th>
+      <th>Number of days avaliable</th>
+      <th>Owner</th>
+    </tr>
+    <% @space.each do |space| %>
+    <tr>
+      <td><%= space.name %></td>
+      <td><%= space.description %></td>
+      <td><%= space.price %></td>
+      <td><%= space.start_date %></td>
+      <td><%= space.end_date %></td>
+      <td><%= space.avaliable_days%> days</td>
+      <td><%= User.get(space.user_id).username %></td>
+    </tr>
+    <% end %>
 </table>
