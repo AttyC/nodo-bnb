@@ -35,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav navbar-left">
 
-          <% if get_user.nil? %>
+          <% if @user.nil? %>
             <li class="nav-item active">
               <form method="get" action="/login" class="nav-link">
                   <input value="Log In" type="submit" />
