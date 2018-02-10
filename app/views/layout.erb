@@ -58,9 +58,12 @@
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/bookings">Booking Requests</a></li>
           <li><a href="/spaces">View Spaces</a></li>
+          <% unless get_user.nil? %>
           <li><a href="/spaces/new">Add a New Space</a></li>
+          <li><a href="/bookings">Booking Requests</a></li>
+          <li><a href="/spaces/<%= get_user.id %>">See my spaces</a></li>
+          <% end %>
         </ul>
       </div>
     </nav>
